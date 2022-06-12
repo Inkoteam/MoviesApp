@@ -80,7 +80,7 @@ fun MovieItem(item: Movies, navController: NavController){
                         text = "Genre: ",
                         fontWeight = FontWeight.Bold
                     )
-                    item.genres.take(2).forEach { Text(text = "$it") }
+                    item.genres.take(2).forEach { Text(text = "$it",) }
                 }
                 Row {
                     Text(
