@@ -15,13 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.inkoteam.moviesapp.MainViewModel
 import com.inkoteam.moviesapp.navigation.Screens
 import com.inkoteam.moviesapp.ui.theme.MoviesAppTheme
 import kotlinx.coroutines.delay
 
 /* Верстаем наши экраны */
 @Composable
-fun SplashScreen (navController: NavController){
+fun SplashScreen (navController: NavController, viewModel: MainViewModel){
     /* Добавим анимации */
     var startAnimate by remember {
         mutableStateOf(false)
@@ -32,6 +33,7 @@ fun SplashScreen (navController: NavController){
     )
     LaunchedEffect(key1 = true){
         startAnimate = true
+        viewModel.getAllMovies() // загрузит фильмы пока грузится экран заставка
         delay (4000)
         navController.navigate(Screens.Main.route)
     }

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.inkoteam.moviesapp.MainViewModel
 import com.inkoteam.moviesapp.screens.MainScreen
 import com.inkoteam.moviesapp.screens.SplashScreen
 import com.inkoteam.moviesapp.utils.Constants
@@ -16,16 +17,16 @@ sealed class Screens (val route: String){
 }
 /* Пока не понятно что мы делаем */
 @Composable
-fun SetupNavHost (navController: NavHostController){
+fun SetupNavHost (navController: NavHostController, viewModel: MainViewModel){
     NavHost(
         navController = navController,
         startDestination = Screens.Splash.route // первый экран который загрузится
     ){
         composable(route = Screens.Splash.route){
-            SplashScreen(navController = navController)
+            SplashScreen(navController = navController, viewModel= viewModel)
         }
         composable(route = Screens.Main.route){
-            MainScreen()
+            MainScreen(navController = navController, viewModel= viewModel)
         }
         composable(route = Screens.Details.route){
 

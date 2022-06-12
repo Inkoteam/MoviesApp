@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.inkoteam.moviesapp.navigation.SetupNavHost
 import com.inkoteam.moviesapp.ui.theme.MoviesAppTheme
@@ -21,7 +22,8 @@ class MainActivity : ComponentActivity() {
             MoviesAppTheme {
                 /* Пока хз что это вообще такое */
                 val navController = rememberNavController()
-                SetupNavHost(navController = navController)
+                val viewModel = hiltViewModel<MainViewModel>()
+                SetupNavHost(navController = navController, viewModel = viewModel)
 
             }
         }
